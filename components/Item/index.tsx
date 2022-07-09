@@ -29,7 +29,7 @@ const Item : React.FC<ItemProps> = ({ data }) => {
       </div>
       <div className={styles.item__desc}>
           <div>
-            <a href='/' className='montserrat font-semibold hover:text-primary'>{data.name}</a>
+            <a href='#' className='montserrat font-semibold hover:text-primary'>{data.name}</a>
             <p className='text-primary'>{`£${data.price}`}</p>
           </div>
           <div className='text-primary text-xl'>
