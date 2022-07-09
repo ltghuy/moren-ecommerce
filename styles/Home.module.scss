@@ -1,0 +1,70 @@
+.home {
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 40rem;
+    background: url('/images/bg-overlay.jpg') no-repeat center/cover;
+    @media screen and (max-width: 1280px) {
+      height: 30rem;
+    }
+    @media screen and (max-width: 768px) {
+      height: 20rem;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      top: var(--navbar-height);
+    }
+  }
+  .collection {
+    width: 100%;
+    margin-top: var(--navbar-height);
+    .line {
+      width: 2px;
+      height: 60px;
+      background-color: var(--green);
+    }
+    h3 {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 18px;
+    }
+    p {
+      max-width: 640px;
+      padding-top: 25px;
+      padding-bottom: 60px;
+      @media screen and (max-width: 768px) {
+        max-width: 320px;
+        padding-top: 10px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+  .girl, .boy {
+    .thumnail {
+      width: 100%;
+      height: 613px;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @media screen and (max-width: 1280px) {
+        height: 400px;
+      }
+      @media screen and (max-width: 768px) {
+        height: 220px;
+      }
+    }
+  }
+  .girl {
+    .thumnail {
+      background: url('/images/girl.jpg') no-repeat center/cover;
+    }
+  }
+  .boy {
+    .thumnail {
+      background: url('/images/boy.jpg') no-repeat center/cover;
+    }
+  }
+}
