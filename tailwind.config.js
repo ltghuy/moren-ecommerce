@@ -12,6 +12,7 @@ module.exports = {
         primary: '#64AD9C'
       },
       spacing: {
+        '98': '32rem',
         '100': '34rem',
       }
     }

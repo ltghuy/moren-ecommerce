@@ -39,7 +39,7 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
         <div className='cursor-pointer mx-3 xl:mx-6'>
           <FontAwesomeIcon icon={faUser} />
         </div>
-        <div className='cursor-pointer relative'>
+        <div className='cursor-pointer relative pr-5 xl:pr-0'>
           <FontAwesomeIcon icon={faDolly} />
           <div className={`${styles.badge} absolute`}>2</div>
         </div>
