@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faSquarePlus, faEye } from '@fortawesome/free-regular-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { addToCart, handleShowCart } from '../../redux/cartSlice'
 import styles from './item.module.scss'
 
 interface ItemProps {
@@ -14,6 +16,12 @@ interface ItemProps {
 }
 
 const Item : React.FC<ItemProps> = ({ data }) => {
+  const dispatch = useDispatch()
+  const addItem = (data: {id: Number, imageUrl: string, name: string, price: Number}) => {
+    dispatch(addToCart(data))
+    dispatch(handleShowCart(true))
+  }
+
   return (
     <div className={styles.item}>
       <div className={`${styles.item__image} group`}>
@@ -36,7 +44,10 @@ const Item : React.FC<ItemProps> = ({ data }) => {
           </div>
           <div className='text-primary text-2xl lg:text-xl'>
             <FontAwesomeIcon icon={faHeart} className='cursor-pointer hover:text-black'/>
-            <FontAwesomeIcon icon={faSquarePlus} className='cursor-pointer hover:text-black ml-3'/>
+            <FontAwesomeIcon 
+              icon={faSquarePlus} 
+              className='cursor-pointer hover:text-black ml-3' 
+              onClick={() => addItem(data)}/>
           </div>
       </div>
     </div>

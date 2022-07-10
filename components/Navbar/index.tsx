@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import { handleShowCart } from '../../redux/cartSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-regular-svg-icons'
 import 
 { 
   faBarsStaggered, 
@@ -8,8 +11,9 @@ import
   faDolly,
   faXmark
 } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import Cart from '../Cart'
 import styles from './navbar.module.scss'
+
 
 interface NavbarProps {
   fixed?:boolean
@@ -17,6 +21,14 @@ interface NavbarProps {
 
 const Navbar : React.FC<NavbarProps> = ({fixed}) => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
+  const isShowCard = useSelector((state: any) => state.cart.showCart)
+  const totalItem = useSelector((state: any) => state.cart.cartList.length)
+  const dispatch = useDispatch()
+
+  const showCart = () => {
+    dispatch(handleShowCart(true))
+  }
+
   return (
     <div className={`${styles.navbar} ${fixed && styles.fixed} my-container bg-transparent-500 flex items-center justify-between z-40`}>
       <div className={styles.navbar__menu} onClick={() => setShowMenu(true)}>
@@ -39,9 +51,10 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
         <div className='cursor-pointer mx-3 xl:mx-6'>
           <FontAwesomeIcon icon={faUser} />
         </div>
-        <div className='cursor-pointer relative pr-5 xl:pr-0'>
+        <div className='cursor-pointer relative pr-5 xl:pr-0'
+             onClick={showCart}>
           <FontAwesomeIcon icon={faDolly} />
-          <div className={`${styles.badge} absolute`}>2</div>
+          <div className={`${styles.badge} absolute`}>{totalItem}</div>
         </div>
       </div>
       {
@@ -63,6 +76,9 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
             <FontAwesomeIcon icon={faXmark} />
           </div>
         </div>
+      }
+      {
+        isShowCard && <Cart />
       }
     </div>
   )

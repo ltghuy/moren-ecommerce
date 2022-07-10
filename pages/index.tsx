@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           <Swiper
             modules={[Autoplay, Pagination]}
             className={styles.carousel__sliders}
-            autoplay={{delay:1200}}
+            autoplay={{delay:1500}}
             loop
             grabCursor={true}
             pagination={{ clickable: true }}
