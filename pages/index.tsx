@@ -5,10 +5,14 @@ import Head from 'next/head'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
 import { GirlItemList, BoyItemList } from '../ultils/homeItems'
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay, Pagination } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
 import Navbar from '../components/Navbar'
-import styles from '../styles/Home.module.scss'
 import Item from '../components/Item'
 import Footer from '../components/Footer'
+import styles from '../styles/Home.module.scss'
 
 const Home: NextPage = () => {
   const [navbarFixed, setNavbarFixed] = useState<boolean>(false)
@@ -19,7 +23,7 @@ const Home: NextPage = () => {
       setNavbarFixed(false)
     }
   }
-
+  
   useEffect(() => {
     window.addEventListener('scroll', handleFixed)
     return () => {
@@ -38,7 +42,30 @@ const Home: NextPage = () => {
         <Navbar fixed={navbarFixed}/>
         <section className={`${styles.carousel} flex justify-center`}>
           <div className='absolute inset-0 bg-overlay'></div>
-          <img className='absolute z-10 my-container' src="/images/bg.jpg" alt="carousel" />
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            className={styles.carousel__sliders}
+            autoplay={{delay:1200}}
+            loop
+            grabCursor={true}
+            pagination={{ clickable: true }}
+          >
+            <SwiperSlide>
+              <a href="/shop" className='absolute z-10 my-container'>
+                <img src="/images/bg.jpg" alt="carousel" />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/shop" className='absolute z-10 my-container'>
+                <img src="/images/carousel1.png" alt="carousel2" />
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              <a href="/shop" className='absolute z-10 my-container'>
+                <img src="/images/carousel2.png" alt="carousel3" />
+              </a>
+            </SwiperSlide>
+          </Swiper>
         </section>
         <section className={`${styles.collection} text-center flex flex-col items-center`}>
           <div className={styles.line}></div>

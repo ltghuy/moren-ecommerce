@@ -32,6 +32,13 @@ body {
   padding: 0 173px;
 }
 
+.swiper-pagination-bullet {
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+  background-color: #ffffffd9 !important;
+  margin: 0 8px !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

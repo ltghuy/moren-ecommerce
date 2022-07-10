@@ -10,16 +10,22 @@
     @media screen and (max-width: 768px) {
       height: 20rem;
     }
+    &__sliders {
+      width: 100%;
+      top: var(--navbar-height);
+    }
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      top: var(--navbar-height);
     }
   }
   .collection {
     width: 100%;
     margin-top: var(--navbar-height);
+    // @media screen and (max-width: 768px) {
+    //   margin-top: 0;
+    // }
     .line {
       width: 2px;
       height: 60px;
