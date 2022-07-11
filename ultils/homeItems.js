@@ -2,76 +2,76 @@ export const GirlItemList = [
   {
     id: 1,
     imageUrl: '/images/m1.jpg',
-    name: 'KNIT CROPPED CARDIGAN',
+    name: 'Knit Cropped Cardigan',
     price: 29.9
   },
   {
     id: 2,
     imageUrl: '/images/m2.jpg',
-    name: 'TIE-DYE SWEATSHIRT',
+    name: 'Tie-dye Sweatshirt',
     price: 29.9
   },
   {
     id: 3,
     imageUrl: '/images/m3.jpg',
-    name: 'SHORT LILAC RUFFLED DRESS',
+    name: 'Short Lilac Ruffled Dress',
     price: 19.9
   },
   {
     id: 4,
     imageUrl: '/images/m4.jpg',
-    name: 'SHORTS WITH TURN-UP HEMS',
+    name: 'Shorts With Turn-up Hems',
     price: 19.9
   },
   {
     id: 5,
     imageUrl: '/images/m5.jpg',
-    name: 'BUTTONED WAISTCOAT',
+    name: 'Buttoned Waistcoat',
     price: 45.9
   },
   {
     id: 6,
     imageUrl: '/images/m6.jpg',
-    name: 'PRINTED SURPLICE BLOUSE',
+    name: 'Printed Surplice Blouse',
     price: 39.9
   },
 ]
 
 export const BoyItemList = [
   {
-    id: 1,
+    id: 7,
     imageUrl: '/images/m7.jpg',
-    name: 'KNIT CROPPED CARDIGAN',
+    name: 'Knit Cropped Cardigan',
     price: 39.9
   },
   {
-    id: 2,
+    id: 8,
     imageUrl: '/images/m8.jpg',
-    name: 'TIE-DYE SWEATSHIRT',
+    name: 'Tie-dye Sweatshirt',
     price: 29.9
   },
   {
-    id: 3,
+    id: 9,
     imageUrl: '/images/m9.jpg',
-    name: 'SHORT LILAC RUFFLED DRESS',
+    name: 'Short Lilac Ruffled Dress',
     price: 19.9
   },
   {
-    id: 4,
+    id: 10,
     imageUrl: '/images/m10.jpg',
-    name: 'SHORTS WITH TURN-UP HEMS',
+    name: 'Shorts With Turn-up Hems',
     price: 19.9
   },
   {
-    id: 5,
+    id: 11,
     imageUrl: '/images/m11.jpg',
-    name: 'BUTTONED WAISTCOAT',
+    name: 'Buttoned Waistcoat',
     price: 45.9
   },
   {
-    id: 6,
+    id: 12,
     imageUrl: '/images/m12.jpg',
-    name: 'PRINTED SURPLICE BLOUSE',
+    name: 'Printed Surplice Blouse',
     price: 39.9
   },
 ]
