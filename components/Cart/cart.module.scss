@@ -1,18 +1,40 @@
 .cart {
+  --width: 420px;
+  --space: 40px;
   position: fixed;
   inset: 0;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    --space: 20px;
+  }
   &__inner {
-    width: 420px;
+    width: var(--width);
     height: 100%;
-    padding: 50px;
+    padding: var(--space);
     animation: slideLeft 0.6s ease-in-out;
     flex-shrink: 0;
     @media screen and (max-width: 768px) {
       width: 100%;
     }
   }
+  &__close {
+    top: var(--space);
+    right: var(--space);
+    width: var(--space);
+    height: var(--space);
+  }
   &__list {
     max-height: 360px;
+    @media screen and (min-width: 376px) {
+      max-height: 450px;
+    }
+    @media screen and (min-height: 1024px) {
+      max-height: 700px;
+    }
+    @media screen and (min-height: 1200px) {
+      max-height: 820px;
+    }
     &::-webkit-scrollbar {
       display: none;
     }
