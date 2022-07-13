@@ -70,7 +70,11 @@ const Cart = () => {
                 </Link>
               </div>
             </div>
-          : <p>No products in the cart.</p>
+          : 
+          <div>
+            <p>No products in the cart.</p>
+            <img className='mt-20' src="/images/empty.gif" alt="empty cart" />
+          </div>
         }
       </div>
     </div>
