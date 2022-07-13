@@ -30,7 +30,7 @@ const Cart = () => {
       <div className='flex-1 bg-overlay h-full' onClick={closeCart} />
       <div className={`${styles.cart__inner} bg-white`}>
         <button 
-          className={`${styles.cart__close} absolute text-4xl hover:text-primary`}
+          className={`${styles.cart__close} absolute hover:text-primary`}
           onClick={closeCart}
         >
           <FontAwesomeIcon icon={faTimes} />
