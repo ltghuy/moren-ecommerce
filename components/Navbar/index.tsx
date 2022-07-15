@@ -45,16 +45,16 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
         </a>
       </Link>
       <div className={`${styles.navbar__controls} flex items-center justify-between`}>
-        <div className='cursor-pointer hidden lg:block'>
+        <div className='cursor-pointer hidden lg:block text-white'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
-        <div className='cursor-pointer mx-3 xl:mx-6'>
+        <div className='cursor-pointer mx-3 xl:mx-6 text-white'>
           <FontAwesomeIcon icon={faUser} />
         </div>
-        <div className='cursor-pointer relative pr-5 xl:pr-0'
+        <div className='cursor-pointer relative pr-5 xl:pr-0 text-white'
              onClick={showCart}>
           <FontAwesomeIcon icon={faDolly} />
-          <div className={`${styles.badge} absolute`}>{totalItem}</div>
+          <div className={`${styles.badge} absolute bg-emerald-500`}>{totalItem}</div>
         </div>
       </div>
       {
