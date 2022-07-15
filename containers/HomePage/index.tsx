@@ -86,7 +86,7 @@ const HomePage = () => {
           <div className={styles.thumnail}>
             <h1 className='montserrat text-white uppercase text-2xl lg:text-7xl'>For girl</h1>
           </div>
-          <div className='my-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-14 my-10 xl:my-20'>
+          <div className={`${styles.list} my-container`}>
             {
               GirlItemList.map((item) =>
                 <Item
