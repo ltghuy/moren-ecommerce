@@ -86,7 +86,7 @@ const HomePage = () => {
         </section>
         <section className={`${styles.girl}`}>
           <div className={styles.thumnail}>
-            <h1 className='montserrat text-white uppercase text-2xl lg:text-7xl'>For girl</h1>
+            <h1 className='montserrat text-white uppercase'>For girl</h1>
           </div>
           <div className={`${styles.list} my-container`}>
             {
@@ -128,7 +128,7 @@ const HomePage = () => {
             </Link>
           </div>
         </section>
-        <section className={styles.subscribe}>
+        <section className={`${styles.subscribe} my-container`}>
             <h1 className={`${styles.title} font-semibold montserrat`}>NEWSLETTERS</h1>
             <p className={`${styles.para} text-base lg:text-xl pt-5`}>
             Subscribe our newsletter to get notify about discount and latest update. Don’t worry, we not spam!

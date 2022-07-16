@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           )
         }
-        <div className='w-1/2 lg:w-1/4'>
+        <div className='w-full lg:w-1/4'>
           <h3 className='montserrat text-base md:text-sm lg:text-base leading-4 font-semibold mb-5'>
             ON SOCIAL NETWORKS
           </h3>
