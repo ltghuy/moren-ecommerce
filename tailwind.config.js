@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         overlay: 'rgb(0 0 0 / 50%)',
         overlay200: 'rgb(0 0 0 / 90%)',
-        primary: '#64AD9C'
+        primary: '#64AD9C',
       },
       spacing: {
         '98': '32rem',

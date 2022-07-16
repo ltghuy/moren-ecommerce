@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { GirlItemList, BoyItemList } from '../ultils/homeItems'
 
 const initialState = {
   showCart: false,
-  cartList: []
+  cartList: [],
+  productList: [...GirlItemList, ...BoyItemList]
 }
 
 export const cartSlice = createSlice({

@@ -29,7 +29,7 @@ const NavbarLink : React.FC<NavbarProps> = ({fixed}) => {
   }
 
   return (
-    <div className={`${styles.navbar} ${fixed && styles.fixed} px-3 md:px-8 bg-white flex items-center justify-between z-40`}>
+    <div className={`${styles.navbar} ${styles.link} ${fixed && styles.fixed} px-3 md:px-8 bg-white flex items-center justify-between z-40`}>
       <Link href='/'>
         <a className={styles.navbar__logo}>
           <img src='/logo-black.svg' alt="moren logo"/>
