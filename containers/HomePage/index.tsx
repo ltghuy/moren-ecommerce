@@ -108,7 +108,7 @@ const HomePage = () => {
           <div className={styles.thumnail}>
             <h1 className='montserrat text-white uppercase text-2xl lg:text-7xl'>For boy</h1>
           </div>
-          <div className='my-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-14 my-10 xl:my-20'>
+          <div className={`${styles.list} my-container`}>
             {
               BoyItemList.map((item) =>
                 <Item
@@ -126,7 +126,7 @@ const HomePage = () => {
             </Link>
           </div>
         </section>
-        <section className='max-w-[320px] lg:max-w-3xl mx-auto pb-20'>
+        <section className={styles.subscribe}>
             <h1 className='text-center font-semibold montserrat text-3xl lg:text-5xl'>NEWSLETTERS</h1>
             <p className='text-base lg:text-xl lg:leading-9 text-center pt-5'>
             Subscribe our newsletter to get notify about discount and latest update. Don’t worry, we not spam!
