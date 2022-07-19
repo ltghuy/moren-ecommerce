@@ -5,6 +5,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookF, faTwitter, faLinkedinIn, faPinterestP} from '@fortawesome/free-brands-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
 import styles from './producDetail.module.scss'
+import Tabs from '../../components/Tabs'
 
 interface ProductProps {
   data: {
@@ -92,6 +93,8 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
           </div>
         </div>
       </div>
+      <div className={`${styles.line} hidden md:block`} />
+      <Tabs productName={data.name}/>
     </div>
   )
 }
