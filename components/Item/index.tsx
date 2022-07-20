@@ -13,10 +13,11 @@ interface ItemProps {
     imageUrl: string,
     name: string,
     price: Number
-  }
+  },
+  showText?: boolean
 }
 
-const Item : React.FC<ItemProps> = ({ data }) => {
+const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
   const dispatch = useDispatch()
   const addItem = (data: {id: Number, imageUrl: string, name: string, price: Number}) => {
     dispatch(addToCart(data))
@@ -25,7 +26,7 @@ const Item : React.FC<ItemProps> = ({ data }) => {
 
   return (
     <div className={styles.item}>
-      <Link href={`product/${data.id}`}>
+      <Link href={`/product/${data.id}`}>
         <a className={`${styles.item__image} group`}>
           <img src={data.imageUrl} alt="item image" />
           <div className='absolute inset-0 bg-overlay hidden items-center justify-center group-hover:flex'>
@@ -38,9 +39,11 @@ const Item : React.FC<ItemProps> = ({ data }) => {
           </div>
         </a>
       </Link>
-      <div className={styles.item__desc}>
+      {
+        showText &&
+        <div className={styles.item__desc}>
           <div>
-            <Link href={`product/${data.id}`}>
+            <Link href={`/product/${data.id}`}>
               <a className='montserrat text-sm lg:text-lg font-semibold hover:text-primary uppercase'>
                 {data.name}
               </a>
@@ -54,7 +57,8 @@ const Item : React.FC<ItemProps> = ({ data }) => {
               className='cursor-pointer hover:text-black ml-3' 
               onClick={() => addItem(data)}/>
           </div>
-      </div>
+        </div>
+      }
     </div>
   )
 }

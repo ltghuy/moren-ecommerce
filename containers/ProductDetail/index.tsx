@@ -4,8 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookF, faTwitter, faLinkedinIn, faPinterestP} from '@fortawesome/free-brands-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
-import styles from './producDetail.module.scss'
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay } from 'swiper'
+import 'swiper/css'
+import { GirlItemList } from '../../ultils/homeItems'
 import Tabs from '../../components/Tabs'
+import Item from '../../components/Item'
+import styles from './producDetail.module.scss'
 
 interface ProductProps {
   data: {
@@ -18,6 +23,8 @@ interface ProductProps {
 
 const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
   const [quantity, setQuantity] = useState<number>(1)
+  const mockDataRelated = GirlItemList.slice(0, 4)
+
   const updateQuantity = (num: number) => {
     if (num === -1 && quantity === 0) {
       setQuantity(0)
@@ -95,6 +102,36 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
       </div>
       <div className={`${styles.line} hidden md:block`} />
       <Tabs productName={data.name}/>
+      <div className={`${styles.line} hidden md:block`} />
+      <div className={`${styles.product__related}`}>
+        <h3 className='montserrat text-2xl font-semibold'>Related Products</h3>
+        <Swiper
+            modules={[Autoplay]}
+            className={styles.product__related__list}
+            grabCursor={true}
+            slidesPerView={1}
+            spaceBetween={50}
+            breakpoints={{
+              768: {
+                slidesPerView: 2
+              },
+              1024: {
+                slidesPerView: 3
+              },
+              1280: {
+                slidesPerView: 4
+              },
+            }}
+          >
+            {
+              mockDataRelated.map((item) =>
+                <SwiperSlide key={item.id}>
+                  <Item data={item} showText={false} />
+                </SwiperSlide>
+              )
+            }
+        </Swiper>
+      </div>  
     </div>
   )
 }

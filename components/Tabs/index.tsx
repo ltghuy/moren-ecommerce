@@ -48,7 +48,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
             id="review" 
             rows={6}/>
         </div>
-        <div className='flex flex-col md:flex-row'>
+        <div className='flex flex-col lg:flex-row'>
           <div>
             <label htmlFor="name" className='block my-4'>Name *</label>
             <input
@@ -57,7 +57,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
               className='border border-[#ddd] focus:border-[#ba6000] outline-none p-3 md:p-6 w-full md:w-96'
             />
           </div>
-          <div className='md:ml-5'>
+          <div className='lg:ml-5'>
             <label htmlFor="email" className='block my-4'>Email *</label>
             <input
               type='email'
