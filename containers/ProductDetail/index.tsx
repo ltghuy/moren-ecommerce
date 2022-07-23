@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from 'swiper'
 import 'swiper/css'
 import { GirlItemList } from '../../ultils/homeItems'
+import { useDispatch } from 'react-redux'
+import { addToCart, handleShowCart } from '../../redux/cartSlice'
 import Tabs from '../../components/Tabs'
 import Item from '../../components/Item'
 import styles from './producDetail.module.scss'
@@ -24,6 +26,7 @@ interface ProductProps {
 const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
   const [quantity, setQuantity] = useState<number>(1)
   const mockDataRelated = GirlItemList.slice(0, 4)
+  const dispatch = useDispatch()
 
   const updateQuantity = (num: number) => {
     if (num === -1 && quantity === 0) {
@@ -31,6 +34,12 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
       return
     }
     setQuantity(quantity + num)
+  }
+
+  const handleAddToCart = (data: ProductProps['data'], quantity: number) => {
+    console.log(data, quantity)
+    dispatch(addToCart({data, quantity}))
+    dispatch(handleShowCart(true))
   }
 
   return (
@@ -61,7 +70,9 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
               <p>{ quantity }</p>
               <button onClick={() => updateQuantity(1)}>+</button>
             </div>
-            <div className={styles.submit__btn}>Add to cart</div>
+            <div className={styles.submit__btn} onClick={() => handleAddToCart(data, quantity)}>
+              Add to cart
+            </div>
           </div>
           <div className={styles.controls}>
             <button>

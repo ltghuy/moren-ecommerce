@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
     },
     addToCart: (state, action) => {
       const index = state.cartList.findIndex(element => {
-        if (element.id === action.payload.id) {
+        if (element.id === action.payload.data.id) {
           return true;
         }
         return false;
@@ -31,7 +31,7 @@ export const cartSlice = createSlice({
         state.cartList = [...newCart, product]
 
       } else {
-        state.cartList = [...state.cartList, {...action.payload, quantity: 1}]
+        state.cartList = [...state.cartList, {...action.payload.data, quantity: action.payload.quantity || 1}]
       }
     },
     deleteItem: (state, action) => {

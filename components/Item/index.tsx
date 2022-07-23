@@ -20,7 +20,7 @@ interface ItemProps {
 const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
   const dispatch = useDispatch()
   const addItem = (data: {id: Number, imageUrl: string, name: string, price: Number}) => {
-    dispatch(addToCart(data))
+    dispatch(addToCart({data}))
     dispatch(handleShowCart(true))
   }
 
