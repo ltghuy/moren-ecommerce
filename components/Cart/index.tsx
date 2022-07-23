@@ -11,7 +11,8 @@ interface CartItem {
   id: number, 
   imageUrl: string, 
   name: string, 
-  price: number
+  price: number,
+  quantity: number
 }
 const Cart = () => {
   const cartList = useSelector((state: any) => state.cart.cartList)
@@ -21,7 +22,7 @@ const Cart = () => {
   }
 
   const getTotalPrice = () => {
-    const total = cartList.reduce((acc: number, item: CartItem) => { return acc + item.price}, 0)
+    const total = cartList.reduce((acc: number, item: CartItem) => { return acc + (item.price * item.quantity)}, 0)
     return total
   }
 

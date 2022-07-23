@@ -15,7 +15,24 @@ export const cartSlice = createSlice({
       state.showCart = action.payload
     },
     addToCart: (state, action) => {
-      state.cartList = [...state.cartList, action.payload]
+      const index = state.cartList.findIndex(element => {
+        if (element.id === action.payload.id) {
+          return true;
+        }
+        return false;
+      });
+      
+      if (index !== -1) {
+        let newCart = state.cartList
+        let product = state.cartList[index]
+        product.quantity++
+        newCart.splice(index, 1)
+
+        state.cartList = [...newCart, product]
+
+      } else {
+        state.cartList = [...state.cartList, {...action.payload, quantity: 1}]
+      }
     },
     deleteItem: (state, action) => {
       let newCart = state.cartList

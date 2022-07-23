@@ -7,7 +7,8 @@ interface CartItemProps {
     id: number, 
     imageUrl: string, 
     name: string, 
-    price: number
+    price: number,
+    quantity: number
   }
 }
 const CartItem: React.FC<CartItemProps> = ({data}) => {
@@ -23,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({data}) => {
         </a>
         <div className='ml-5'>
           <a href='#' className='text-base text-black hover:text-primary'>{data.name}</a>
-          <p className='text-sm pt-1'>2 <span className='text-xs'>x</span> £{data.price}</p>
+          <p className='text-sm pt-1'>{data.quantity} <span className='text-xs'>x</span> £{data.price}</p>
         </div>
       </div>
       <button className='text-sm hover:text-primary' onClick={() => deleteCartItem(data.id)}>
