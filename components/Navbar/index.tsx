@@ -22,11 +22,16 @@ interface NavbarProps {
 const Navbar : React.FC<NavbarProps> = ({fixed}) => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
   const isShowCard = useSelector((state: any) => state.cart.showCart)
-  const totalItem = useSelector((state: any) => state.cart.cartList.length)
+  const cartList = useSelector((state: any) => state.cart.cartList)
   const dispatch = useDispatch()
 
   const showCart = () => {
     dispatch(handleShowCart(true))
+  }
+  
+  const getTotalProduct = () => {
+    const total = cartList.reduce((acc: number, item: any) => { return acc + item.quantity}, 0)
+    return total
   }
 
   return (
@@ -54,7 +59,7 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
         <div className='cursor-pointer relative pr-5 xl:pr-0 text-white'
              onClick={showCart}>
           <FontAwesomeIcon icon={faDolly} />
-          <div className={`${styles.badge} absolute bg-emerald-500`}>{totalItem}</div>
+          <div className={`${styles.badge} absolute bg-emerald-500`}>{getTotalProduct()}</div>
         </div>
       </div>
       {

@@ -23,7 +23,7 @@ const Cart = () => {
 
   const getTotalPrice = () => {
     const total = cartList.reduce((acc: number, item: CartItem) => { return acc + (item.price * item.quantity)}, 0)
-    return total
+    return total.toFixed(2);
   }
 
   return (
@@ -53,7 +53,7 @@ const Cart = () => {
               <div className='absolute right-0 left-0 bottom-24 bg-white'>
                 <div className='flex justify-between font-semibold mt-5'>
                   <p>Subtotal: </p>
-                  <p>£{getTotalPrice()}</p>
+                  <p>£ {getTotalPrice()}</p>
                 </div>
                 <div className='w-full h-8 leading-8 bg-teal-600 text-white my-4 pl-2 text-sm'>
                   <FontAwesomeIcon icon={faTruck} className='mr-2'/>
