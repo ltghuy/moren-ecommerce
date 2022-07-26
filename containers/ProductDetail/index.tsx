@@ -7,11 +7,13 @@ import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from 'swiper'
 import 'swiper/css'
+import InnerImageZoom from 'react-inner-image-zoom'
 import { GirlItemList } from '../../ultils/homeItems'
 import { useDispatch } from 'react-redux'
 import { addToCart, handleShowCart } from '../../redux/cartSlice'
 import Tabs from '../../components/Tabs'
 import Item from '../../components/Item'
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css'
 import styles from './producDetail.module.scss'
 
 interface ProductProps {
@@ -54,9 +56,13 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
         <p>{data.name}</p>
       </div>
       <div className={styles.product__info}>
-        <a href="/" className={styles.image}>
-          <img src={data.imageUrl} alt="product image" />
-        </a>
+        <div className={styles.image}>
+          <InnerImageZoom 
+          src={data.imageUrl} 
+          zoomScale={0.85} 
+          zoomType='hover'
+          fullscreenOnMobile={true} />
+        </div>
         <div className={styles.desc}>
           <h3 className={`${styles.name} font-semibold montserrat`}>{data.name}</h3>
           <p className={styles.price}>{`£${data.price}`}</p>
