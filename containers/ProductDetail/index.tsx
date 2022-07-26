@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { GirlItemList } from '../../ultils/homeItems'
+import { useDispatch } from 'react-redux'
+import { addToCart, handleShowCart } from '../../redux/cartSlice'
+import Tabs from '../../components/Tabs'
+import Item from '../../components/Item'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faFacebookF, faTwitter, faLinkedinIn, faPinterestP} from '@fortawesome/free-brands-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
@@ -8,11 +15,6 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from 'swiper'
 import 'swiper/css'
 import InnerImageZoom from 'react-inner-image-zoom'
-import { GirlItemList } from '../../ultils/homeItems'
-import { useDispatch } from 'react-redux'
-import { addToCart, handleShowCart } from '../../redux/cartSlice'
-import Tabs from '../../components/Tabs'
-import Item from '../../components/Item'
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css'
 import styles from './producDetail.module.scss'
 
@@ -103,16 +105,16 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
           <div className={styles.line} />
           <div className={styles.socials}>
             <Link  href="/">
-              <a><FontAwesomeIcon icon={faFacebookF}/></a>
+              <a><FontAwesomeIcon icon={faFacebookF  as IconProp}/></a>
             </Link>
             <Link  href="/">
-              <a><FontAwesomeIcon icon={faTwitter}/></a>
+              <a><FontAwesomeIcon icon={faTwitter  as IconProp}/></a>
             </Link>
             <Link  href="/">
-              <a><FontAwesomeIcon icon={faLinkedinIn}/></a>
+              <a><FontAwesomeIcon icon={faLinkedinIn  as IconProp}/></a>
             </Link>
             <Link  href="/">
-              <a><FontAwesomeIcon icon={faPinterestP}/></a>
+              <a><FontAwesomeIcon icon={faPinterestP  as IconProp}/></a>
             </Link>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { FooterItem } from '../../ultils/footerItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faFacebookF, faPinterestP, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import styles from './footer.module.scss'
 
@@ -37,17 +38,17 @@ const Footer = () => {
           </h3>
           <Link href='/'>
             <a className='text-xl lg:text-2xl leading-6 my-1 inline opacity-60 hover:opacity-100 mr-4 lg:mr-8'>
-              <FontAwesomeIcon icon={faFacebookF} />
+              <FontAwesomeIcon icon={faFacebookF as IconProp} />
             </a>
           </Link>
           <Link href='/'>
             <a className='text-xl lg:text-2xl leading-6 my-1 inline opacity-60 hover:opacity-100 mr-4 lg:mr-8'>
-              <FontAwesomeIcon icon={faPinterestP} />
+              <FontAwesomeIcon icon={faPinterestP as IconProp} />
             </a>
           </Link>
           <Link href='/'>
             <a className='text-xl lg:text-2xl leading-6 my-1 inline opacity-60 hover:opacity-100 mr-4 lg:mr-8'>
-              <FontAwesomeIcon icon={faTwitter} />
+              <FontAwesomeIcon icon={faTwitter as IconProp} />
             </a>
           </Link>
         </div>
