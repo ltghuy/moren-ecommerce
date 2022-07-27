@@ -1,12 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleShowCart } from '../../redux/cartSlice'
 import CartItem from '../CartItem'
 import styles from './cart.module.scss'
-
 interface CartItem {
   id: number, 
   imageUrl: string, 
@@ -17,8 +16,15 @@ interface CartItem {
 const Cart = () => {
   const cartList = useSelector((state: any) => state.cart.cartList)
   const dispatch = useDispatch()
+  const router = useRouter()
+
   const closeCart = () => {
     dispatch(handleShowCart(false))
+  }
+
+  const handleClick = (path: string) => {
+    dispatch(handleShowCart(false))
+    router.push(path)
   }
 
   const getTotalPrice = () => {
@@ -59,16 +65,16 @@ const Cart = () => {
                   <FontAwesomeIcon icon={faTruck} className='mr-2'/>
                   Congratulations! You&apos;ve got free
                 </div>
-                <Link href="/cart">
-                  <a className='w-full h-10 lg:h-14 flex justify-center items-center bg-black hover:bg-primary text-white text-sm transition mb-3'>
-                    View cart
-                  </a>
-                </Link>
-                <Link href="/checkout">
-                  <a className='w-full h-10 lg:h-14 flex justify-center items-center bg-black hover:bg-primary text-white text-sm transition'>
-                    Checkout
-                  </a>
-                </Link>
+                <button 
+                className='w-full h-10 lg:h-14 flex justify-center items-center bg-black hover:bg-primary text-white text-sm transition mb-3'
+                onClick={() => handleClick('/cart')}>
+                  View cart
+                </button>
+                <button 
+                className='w-full h-10 lg:h-14 flex justify-center items-center bg-black hover:bg-primary text-white text-sm transition'
+                onClick={() => handleClick('/checkout')}>
+                  Checkout
+                </button>
               </div>
             </div>
           : 
