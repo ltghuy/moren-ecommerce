@@ -1,10 +1,13 @@
 import React from 'react'
 import Link from 'next/link'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faSquarePlus, faEye } from '@fortawesome/free-regular-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { addToCart, handleShowCart } from '../../redux/cartSlice'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 import styles from './item.module.scss'
 
 interface ItemProps {
@@ -28,7 +31,11 @@ const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
     <div className={styles.item}>
       <Link href={`/product/${data.id}`}>
         <a className={`${styles.item__image} group`}>
-          <img src={data.imageUrl} alt="item image" />
+          {/* <img src={data.imageUrl} alt="item image" /> */}
+          <LazyLoadImage 
+            alt='product image'
+            src={data.imageUrl}
+            effect='blur'/>
           <div className='absolute inset-0 bg-overlay hidden items-center justify-center group-hover:flex'>
             <button className='w-11 h-11 bg-white text-black hover:text-white hover:bg-primary mx-1 transition hidden lg:block'>
               <FontAwesomeIcon icon={faEye} size='xs'/>
