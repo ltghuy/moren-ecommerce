@@ -31,7 +31,6 @@ const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
     <div className={styles.item}>
       <Link href={`/product/${data.id}`}>
         <a className={`${styles.item__image} group`}>
-          {/* <img src={data.imageUrl} alt="item image" /> */}
           <LazyLoadImage 
             alt='product image'
             src={data.imageUrl}
