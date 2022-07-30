@@ -41,7 +41,6 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
   }
 
   const handleAddToCart = (data: ProductProps['data'], quantity: number) => {
-    console.log(data, quantity)
     dispatch(addToCart({data, quantity}))
     dispatch(handleShowCart(true))
   }

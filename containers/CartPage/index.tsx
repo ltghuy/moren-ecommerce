@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faXmark, faTrashCan, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight, faXmark, faTrashCan, faCheck, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteItem } from '../../redux/cartSlice'
+import { deleteItem, increaseItem, decreaseItem } from '../../redux/cartSlice'
 import DiscountLogo from '../../public/images/discount.svg'
 import GiftLogo from '../../public/images/gift.svg'
 import DeliveryLogo from '../../public/images/delivery.svg'
@@ -20,18 +20,23 @@ interface CartItem {
 const CartPage = () => {
   const [shippingType, setShippingType] = useState<string>('default')
   const cartList = useSelector((state: any) => state.cart.cartList)
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   let shippingFee = 50
   if (shippingType === 'local') {
     shippingFee = 0
   }
-
+  const inscreaseProduct = (productId: number) => {
+    dispatch(increaseItem(productId))
+  }
+  const decreaseItemProduct = (productId: number) => {
+    dispatch(decreaseItem(productId))
+  }
   const deleteProduct = (id: number) => {
-    dispath(deleteItem(id))
+    dispatch(deleteItem(id))
   }
   const getSubTotal = () => {
-    const total = cartList.reduce((acc: number, item: CartItem) => { return acc + (item.price * item.quantity)}, 0)
-    return total.toFixed(2)
+    const subTotal = cartList.reduce((acc: number, item: CartItem) => { return acc + (item.price * item.quantity)}, 0)
+    return subTotal.toFixed(2)
   }
   const getTotalPrice = () => {
     const total = cartList.reduce((acc: number, item: CartItem) => { return acc + (item.price * item.quantity)}, shippingFee)
@@ -95,13 +100,23 @@ const CartPage = () => {
                             </Link>
                             <p className={styles.mobileShow}>Price: £{ product.price }</p>
                             <strong className={styles.mobileShow}>
-                              Subtotal: £{ product.price * product.quantity }
+                              Subtotal: {`£${ Math.round(product.price * product.quantity * 1000 )/ 1000 }`}
                             </strong>
                           </td>
                           <td style={{width: '15%'}} className={styles.mobileHidden}>{`£${ product.price }`}</td>
-                          <td style={{width: '15%'}} className={styles.mb_float_right}>{ product.quantity }</td>
+                          <td style={{width: '15%'}} className={styles.mb_float_right}>
+                            <div className={styles.range}>
+                              <button onClick={() => decreaseItemProduct(product.id)}>
+                                <FontAwesomeIcon icon={faMinus}/>
+                              </button>
+                              <p>{ product.quantity }</p>
+                              <button onClick={() => inscreaseProduct(product.id)}>
+                              <FontAwesomeIcon icon={faPlus}/>
+                              </button>
+                            </div>
+                          </td>
                           <td style={{width: '15%'}} className={styles.mobileHidden}>
-                            {`£${ product.price * product.quantity }`}
+                            {`£${ Math.round(product.price * product.quantity * 1000 )/ 1000 }`}
                           </td>
                         </tr>
                       ))
