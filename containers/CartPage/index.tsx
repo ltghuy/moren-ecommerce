@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faXmark, faTrashCan, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem } from '../../redux/cartSlice'
+import DiscountLogo from '../../public/images/discount.svg'
+import GiftLogo from '../../public/images/gift.svg'
+import DeliveryLogo from '../../public/images/delivery.svg'
 import styles from './cartPage.module.scss'
 
 interface CartItem {
@@ -195,6 +198,43 @@ const CartPage = () => {
           <Link href="/shop">
             <a className={styles.button}>Shop now</a>
           </Link>
+        </div>
+      </section>
+      <section className={styles.program}>
+        <div className='my-container flex flex-col md:flex-row justify-between'>
+          <div className={styles.item}>
+            <div className={styles.logo}>
+              <DiscountLogo />
+            </div>
+            <div className={styles.content}>
+              <h3 className='text-xl uppercase font-bold'>New discount</h3>
+              <p>
+                Lorem ipsum dolor sit amet, id pericula appe llantur eam, mea.
+              </p>
+            </div>
+          </div>
+          <div className={styles.item}>
+            <div className={styles.logo}>
+              <GiftLogo />
+            </div>
+            <div className={styles.content}>
+              <h3 className='text-xl uppercase font-bold'>Gift vouchers</h3>
+              <p>
+                Lorem ipsum dolor sit amet, id pericula appe llantur eam, mea.
+              </p>
+            </div>
+          </div>
+          <div className={styles.item}>
+            <div className={styles.logo}>
+              <DeliveryLogo />
+            </div>
+            <div className={styles.content}>
+              <h3 className='text-xl uppercase font-bold'>Free Delivery</h3>
+              <p>
+                Lorem ipsum dolor sit amet, id pericula appe llantur eam, mea.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
