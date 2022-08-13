@@ -1,0 +1,43 @@
+.dropdown {
+  width: auto;
+  height: 100%;
+  &:global(.active) {
+    // .dropdown__button svg {
+    //   transform: scale(-1);
+    // }
+    .dropdown__list {
+      display: block;
+    }
+  }
+  .link {
+    transition: all 0.3s;
+    &:hover {
+      color: var(--beige);
+    }
+  }
+  &__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    margin-bottom: 6px;
+    svg path {
+      fill: #7b7b7b;
+    }
+  }
+  &__list {
+    width: 100%;
+    margin-top: 10px;
+    display: none;
+    li {
+      height: 35px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      a {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faXmark, faTrashCan, faCheck, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faTrashCan, faCheck, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteItem, increaseItem, decreaseItem } from '../../redux/cartSlice'
 import DiscountLogo from '../../public/images/discount.svg'
 import GiftLogo from '../../public/images/gift.svg'
 import DeliveryLogo from '../../public/images/delivery.svg'
+import Thumnail from '../../components/Thumnail'
 import styles from './cartPage.module.scss'
 
 interface CartItem {
@@ -45,19 +46,7 @@ const CartPage = () => {
 
   return (
     <main className={styles.cart}>
-      <section className={styles.thumnail}>
-        <img src="/images/cart-bg.jpg" alt="thumnail" />
-        <div className={`${styles.content} flex justify-center items-center flex-col`}>
-          <h1 className='montserrat font-semibold text-white'>Cart</h1>
-          <div className='flex items-center'>
-            <Link href="/">
-              <a className={`${styles.link} text-white hover:text-amber-600`}>Home</a>
-            </Link>
-            <FontAwesomeIcon icon={faAngleRight} color='white' />
-            <div className={`${styles.link} text-white`}>Cart</div>
-          </div>
-        </div>
-      </section>
+      <Thumnail background='/images/cart-bg.jpg' link='Cart'/>
       <section className={`${styles.container} my-container`}>
         { 
           cartList.length > 0 ?
