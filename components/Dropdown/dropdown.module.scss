@@ -2,9 +2,9 @@
   width: auto;
   height: 100%;
   &:global(.active) {
-    // .dropdown__button svg {
-    //   transform: scale(-1);
-    // }
+    .dropdown__button svg {
+      transform: scale(-1);
+    }
     .dropdown__list {
       display: block;
     }
@@ -30,14 +30,23 @@
     width: 100%;
     margin-top: 10px;
     display: none;
+    animation: fadeIn 0.5s ease-in-out;
     li {
       height: 35px;
       display: flex;
       align-items: center;
       padding-left: 20px;
-      a {
-        width: 100%;
-      }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(-20%);
+  } 
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
 }
