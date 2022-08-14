@@ -157,6 +157,8 @@
 
   .main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 
     .header {
       width: 100%;
@@ -164,6 +166,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
 
       .showing {
         line-height: 24px;
@@ -186,11 +189,39 @@
         }
       }
     }
+
+    .products {
+      flex: 1;
+      width: 100%;
+      padding-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 3rem;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+    }
   }
 
   @media screen and (max-width: 1024px) {
     .sidebar {
       display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .wrapper {
+      padding-top: 30px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .main {
+      .header {
+        font-size: 11px;
+      }
     }
   }
 }

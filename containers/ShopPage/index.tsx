@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faCheck, faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
 import { SideBarCategory, SideBarColors, SidebarBrands, SidebarInstagram } from '../../ultils/sidebarItems'
@@ -8,12 +9,21 @@ import ListIcon from '../../public/list-ul-solid.svg'
 import Thumnail from '../../components/Thumnail'
 import Dropdown from '../../components/Dropdown'
 import Select from '../../components/Select'
+import Item from '../../components/Item'
 import styles from './shop.module.scss'
+
+interface ProductProps {
+  id: number,
+  imageUrl: string,
+  name: string,
+  price: number
+}
 
 const ShopPage = () => {
   const [sizeQuery, setSizeQuery] = useState<string[]>([])
   const [brandQuery, setBrandQuery] = useState<string[]>([])
   const [layout, setLayout] = useState<string>('grip')
+  const productList: ProductProps[] = useSelector((state: any) => state.cart.productList)
 
   const pagingSelection = [
     { id: 1, text: 'Show 12', value: '12' },
@@ -150,8 +160,8 @@ const ShopPage = () => {
           <div className={styles.header}>
             <p className={styles.showing}>Showing 1–12 of 88 results</p>
             <div className={styles.controls}>
-              <Select options={pagingSelection} />
-              <Select options={sortSelection} />
+              <Select options={pagingSelection} classStyles='hidden md:block' />
+              <Select options={sortSelection} classStyles='hidden md:block' />
               <ListIcon
                 className={`${styles.list_icon} ${layout === 'list' && styles.active}`}
                 onClick={() => handleLayout('list')} />
@@ -159,6 +169,17 @@ const ShopPage = () => {
                 className={`${styles.grip_icon} ${layout === 'grip' && styles.active}`}
                 onClick={() => handleLayout('grip')} />
             </div>
+          </div>
+          <div className={styles.products}>
+            {
+              productList.map((item) =>
+                <Item
+                  data={item}
+                  showText={false}
+                  key={item.id}
+                />
+              )
+            }
           </div>
         </section>
       </main>

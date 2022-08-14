@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import styles from './select.module.scss'
-import { spawn } from 'child_process'
 
 interface SelectProps {
-  options: { id: number, text: string, value: string, icon?: React.ReactNode }[]
+  options: { id: number, text: string, value: string, icon?: React.ReactNode }[],
+  classStyles?: string
 }
-const Select: React.FC<SelectProps> = ({ options }) => {
+const Select: React.FC<SelectProps> = ({ options, classStyles }) => {
   const [selected, setSelected] = useState<any>(options[0])
   const [showOptions, setShowOptions] = useState<boolean>(false)
 
@@ -25,7 +25,7 @@ const Select: React.FC<SelectProps> = ({ options }) => {
   }
 
   return (
-    <div className={styles.select} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
+    <div className={`${styles.select} ${classStyles}`} onMouseEnter={handleFocus} onMouseLeave={handleBlur}>
       <div className={`${styles.select__btn} ${showOptions && styles.focus}`}>
         <p>
           {selected.text}

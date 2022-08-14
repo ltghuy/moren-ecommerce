@@ -20,10 +20,10 @@ interface ItemProps {
   showText?: boolean
 }
 
-const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
+const Item: React.FC<ItemProps> = ({ data, showText = true }) => {
   const dispatch = useDispatch()
-  const addItem = (data: {id: Number, imageUrl: string, name: string, price: Number}) => {
-    dispatch(addToCart({data}))
+  const addItem = (data: { id: Number, imageUrl: string, name: string, price: Number }) => {
+    dispatch(addToCart({ data }))
     dispatch(handleShowCart(true))
   }
 
@@ -31,16 +31,16 @@ const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
     <div className={styles.item}>
       <Link href={`/product/${data.id}`}>
         <a className={`${styles.item__image} group`}>
-          <LazyLoadImage 
+          <LazyLoadImage
             alt='product image'
             src={data.imageUrl}
-            effect='blur'/>
+            effect='blur' />
           <div className='absolute inset-0 bg-overlay hidden items-center justify-center group-hover:flex'>
             <button className='w-11 h-11 bg-white text-black hover:text-white hover:bg-primary mx-1 transition hidden lg:block'>
-              <FontAwesomeIcon icon={faEye} size='xs'/>
+              <FontAwesomeIcon icon={faEye} size='xs' />
             </button>
             <button className='w-11 h-11 bg-white text-black hover:text-white hover:bg-primary mx-1 transition'>
-              <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} size='xs'/>
+              <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} size='xs' />
             </button>
           </div>
         </a>
@@ -48,7 +48,7 @@ const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
       {
         showText &&
         <div className={styles.item__desc}>
-          <div>
+          <div className='pt-3'>
             <Link href={`/product/${data.id}`}>
               <a className='montserrat text-sm lg:text-lg font-semibold hover:text-primary uppercase'>
                 {data.name}
@@ -56,12 +56,12 @@ const Item : React.FC<ItemProps> = ({ data, showText = true }) => {
             </Link>
             <p className='text-primary'>{`£${data.price}`}</p>
           </div>
-          <div className='text-primary text-2xl lg:text-xl'>
-            <FontAwesomeIcon icon={faHeart} className='cursor-pointer hover:text-black'/>
-            <FontAwesomeIcon 
-              icon={faSquarePlus} 
-              className='cursor-pointer hover:text-black ml-3' 
-              onClick={() => addItem(data)}/>
+          <div className='text-primary text-2xl lg:text-xl flex ml-3'>
+            <FontAwesomeIcon icon={faHeart} className='cursor-pointer hover:text-black' />
+            <FontAwesomeIcon
+              icon={faSquarePlus}
+              className='cursor-pointer hover:text-black ml-3'
+              onClick={() => addItem(data)} />
           </div>
         </div>
       }
