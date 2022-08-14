@@ -29,14 +29,20 @@
 
   &__options {
     border: 1px solid #bbb;
+    background-color: var(--white);
     position: absolute;
     transform: translateY(15px);
     width: 100%;
+    z-index: 2;
 
     li {
       padding: 8px 15px;
       display: flex;
       align-items: center;
+
+      &.active {
+        background-color: var(--light-gray);
+      }
 
       span {
         margin-right: 10px;

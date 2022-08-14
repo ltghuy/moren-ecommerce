@@ -160,8 +160,8 @@ const ShopPage = () => {
           <div className={styles.header}>
             <p className={styles.showing}>Showing 1–12 of 88 results</p>
             <div className={styles.controls}>
-              <Select options={pagingSelection} classStyles='hidden md:block' />
-              <Select options={sortSelection} classStyles='hidden md:block' />
+              <Select options={pagingSelection} classStyles='hidden lg:block' />
+              <Select options={sortSelection} classStyles='hidden lg:block' />
               <ListIcon
                 className={`${styles.list_icon} ${layout === 'list' && styles.active}`}
                 onClick={() => handleLayout('list')} />
@@ -175,8 +175,8 @@ const ShopPage = () => {
               productList.map((item) =>
                 <Item
                   data={item}
-                  showText={false}
                   key={item.id}
+                  textCenter
                 />
               )
             }

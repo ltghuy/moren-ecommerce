@@ -36,7 +36,10 @@ const Select: React.FC<SelectProps> = ({ options, classStyles }) => {
       <ul className={`${styles.select__options} ${showOptions ? '' : 'hidden'}`}>
         {
           options.map((option) =>
-            <li key={option.id} onClick={() => handleSelected(option)}>
+            <li
+              key={option.id}
+              onClick={() => handleSelected(option)}
+              className={`${option.id === selected.id && styles.active}`}>
               <span>{option.text}</span>
               {option.icon && option.icon}
             </li>

@@ -17,10 +17,11 @@ interface ItemProps {
     name: string,
     price: Number
   },
-  showText?: boolean
+  showText?: boolean,
+  textCenter?: boolean
 }
 
-const Item: React.FC<ItemProps> = ({ data, showText = true }) => {
+const Item: React.FC<ItemProps> = ({ data, showText = true, textCenter = false }) => {
   const dispatch = useDispatch()
   const addItem = (data: { id: Number, imageUrl: string, name: string, price: Number }) => {
     dispatch(addToCart({ data }))
@@ -47,16 +48,18 @@ const Item: React.FC<ItemProps> = ({ data, showText = true }) => {
       </Link>
       {
         showText &&
-        <div className={styles.item__desc}>
-          <div className='pt-3'>
+        <div
+          className={`${styles.item__desc} ${textCenter && 'text-center'}`}
+          style={{ alignItems: `${textCenter && 'unset'}` }}>
+          <div className={`${textCenter ? 'flex flex-col justify-between w-full capitalize' : 'uppercase'} pt-3`}>
             <Link href={`/product/${data.id}`}>
-              <a className='montserrat text-sm lg:text-lg font-semibold hover:text-primary uppercase'>
+              <a className='montserrat text-sm lg:text-lg font-semibold hover:text-primary'>
                 {data.name}
               </a>
             </Link>
             <p className='text-primary'>{`£${data.price}`}</p>
           </div>
-          <div className='text-primary text-2xl lg:text-xl flex ml-3'>
+          <div className={`${textCenter && 'hidden'} text-primary text-2xl lg:text-xl flex ml-3`}>
             <FontAwesomeIcon icon={faHeart} className='cursor-pointer hover:text-black' />
             <FontAwesomeIcon
               icon={faSquarePlus}
