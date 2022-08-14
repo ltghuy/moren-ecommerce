@@ -143,4 +143,20 @@ export const SideBarColors = [
   },
 ]
 
+export const SidebarBrands = [
+  {id: 1, label: 'Channel', value: 'Channel'},
+  {id: 2, label: 'Gucci', value: 'Gucci'},
+  {id: 3, label: 'Balenciaga', value: 'Balenciaga'},
+  {id: 4, label: 'Nike', value: 'Nike'},
+  {id: 5, label: 'Adidas', value: 'Adidas'},
+]
+
+export const SidebarInstagram = [
+  {id: 1, url_image: '/images/me1.jpg'},
+  {id: 2, url_image: '/images/me2.jpg'},
+  {id: 3, url_image: '/images/me3.jpg'},
+  {id: 4, url_image: '/images/me4.jpg'},
+  {id: 5, url_image: '/images/me5.jpg'},
+  {id: 6, url_image: '/images/me6.jpg'},
+]
 

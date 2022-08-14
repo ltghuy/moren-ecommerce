@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +9,6 @@ interface DropdownProps {
   items: { id: number, text: string, link: string }[]
 }
 const Dropdown: React.FC<DropdownProps> = ({ label, items }) => {
-  const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const dropdownRef = useRef<any>(null)
 
   const setActive = () => {

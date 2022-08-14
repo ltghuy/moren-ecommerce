@@ -1,15 +1,43 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Thumnail from '../../components/Thumnail'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { SideBarCategory, SideBarColors } from '../../ultils/sidebarDropdown'
+import { faMagnifyingGlass, faCheck, faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
+import { SideBarCategory, SideBarColors, SidebarBrands, SidebarInstagram } from '../../ultils/sidebarItems'
+import GripIcon from '../../public/grip-solid.svg'
+import ListIcon from '../../public/list-ul-solid.svg'
+import Thumnail from '../../components/Thumnail'
 import Dropdown from '../../components/Dropdown'
+import Select from '../../components/Select'
 import styles from './shop.module.scss'
 
 const ShopPage = () => {
   const [sizeQuery, setSizeQuery] = useState<string[]>([])
   const [brandQuery, setBrandQuery] = useState<string[]>([])
+  const [layout, setLayout] = useState<string>('grip')
+
+  const pagingSelection = [
+    { id: 1, text: 'Show 12', value: '12' },
+    { id: 2, text: 'Show 15', value: '15' },
+    { id: 3, text: 'Show 30', value: '30' },
+  ]
+
+  const sortSelection = [
+    { id: 1, text: 'Sort By Default', value: 'default' },
+    { id: 2, text: 'Sort By Popularity', value: 'popularity' },
+    { id: 3, text: 'Sort By Rated', value: 'rated' },
+    {
+      id: 4,
+      text: 'Sort By Price',
+      value: 'price-desc',
+      icon: <FontAwesomeIcon icon={faArrowDownLong} size='xs' />
+    },
+    {
+      id: 5,
+      text: 'Sort By Price',
+      value: 'prices-asc',
+      icon: <FontAwesomeIcon icon={faArrowUpLong} size='xs' />
+    }
+  ]
 
   const handleSizeChange = (e: any) => {
     const { value, checked } = e.target
@@ -29,6 +57,10 @@ const ShopPage = () => {
     else {
       setBrandQuery(brandQuery.filter((e: any) => e !== value))
     }
+  }
+
+  const handleLayout = (layout: string) => {
+    setLayout(layout)
   }
 
   return (
@@ -83,51 +115,19 @@ const ShopPage = () => {
           <div className={styles.brands}>
             <h3 className={`${styles.heading} text-xl leading-6 montserrat font-semibold`}>By Brands</h3>
             <div className={styles.options}>
-              <div className='flex items-center mb-3'>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="Channel"
-                  value="Channel"
-                  onChange={handleBrandChange} />
-                <label htmlFor="Channel" className='ml-3 text-sm cursor-pointer'>Channel</label>
-              </div>
-              <div className='flex items-center mb-3'>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="Gucci"
-                  value="Gucci"
-                  onChange={handleBrandChange} />
-                <label htmlFor="Gucci" className='ml-3 text-sm cursor-pointer'>Gucci</label>
-              </div>
-              <div className='flex items-center mb-3'>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="Balenciaga"
-                  value="Balenciaga"
-                  onChange={handleBrandChange} />
-                <label htmlFor="Balenciaga" className='ml-3 text-sm cursor-pointer'>Balenciaga</label>
-              </div>
-              <div className='flex items-center mb-3'>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="Nike"
-                  value="Nike"
-                  onChange={handleBrandChange} />
-                <label htmlFor="Nike" className='ml-3 text-sm cursor-pointer'>Nike</label>
-              </div>
-              <div className='flex items-center mb-3'>
-                <input
-                  type="checkbox"
-                  name="brand"
-                  id="Adidas"
-                  value="Adidas"
-                  onChange={handleBrandChange} />
-                <label htmlFor="Adidas" className='ml-3 text-sm cursor-pointer'>Adidas</label>
-              </div>
+              {
+                SidebarBrands.map((brand) =>
+                  <div className='flex items-center mb-3' key={brand.id}>
+                    <input
+                      type="checkbox"
+                      name="brand"
+                      id={brand.label}
+                      value={brand.value}
+                      onChange={handleBrandChange} />
+                    <label htmlFor={brand.label} className='ml-3 text-sm cursor-pointer'>{brand.label}</label>
+                  </div>
+                )
+              }
             </div>
           </div>
           <div className={styles.banner}>
@@ -136,28 +136,31 @@ const ShopPage = () => {
           <div className={styles.instagram}>
             <h3 className={`${styles.heading} text-xl leading-6 montserrat font-semibold`}>Instagram</h3>
             <div className={styles.grid}>
-              <div className={styles.post}>
-                <img src="/images/me1.jpg" alt="img" />
-              </div>
-              <div className={styles.post}>
-                <img src="/images/me2.jpg" alt="img" />
-              </div>
-              <div className={styles.post}>
-                <img src="/images/me3.jpg" alt="img" />
-              </div>
-              <div className={styles.post}>
-                <img src="/images/me4.jpg" alt="img" />
-              </div>
-              <div className={styles.post}>
-                <img src="/images/me5.jpg" alt="img" />
-              </div>
-              <div className={styles.post}>
-                <img src="/images/me6.jpg" alt="img" />
-              </div>
+              {
+                SidebarInstagram.map((post) =>
+                  <div className={styles.post} key={post.id}>
+                    <img src={post.url_image} alt="img" />
+                  </div>
+                )
+              }
             </div>
           </div>
         </section>
-        <section className={styles.main}></section>
+        <section className={styles.main}>
+          <div className={styles.header}>
+            <p className={styles.showing}>Showing 1–12 of 88 results</p>
+            <div className={styles.controls}>
+              <Select options={pagingSelection} />
+              <Select options={sortSelection} />
+              <ListIcon
+                className={`${styles.list_icon} ${layout === 'list' && styles.active}`}
+                onClick={() => handleLayout('list')} />
+              <GripIcon
+                className={`${styles.grip_icon} ${layout === 'grip' && styles.active}`}
+                onClick={() => handleLayout('grip')} />
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   )

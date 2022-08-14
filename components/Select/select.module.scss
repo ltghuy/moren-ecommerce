@@ -1,0 +1,53 @@
+.select {
+  position: relative;
+  min-width: 200px;
+  padding: 1rem 0;
+  margin-left: 10px;
+
+  &__btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    width: 100%;
+
+    p {
+      margin-right: 15px;
+
+      svg {
+        margin-left: 10px;
+      }
+    }
+
+    &.focus {
+      svg.sort_icon {
+        transform: scale(-1);
+      }
+    }
+  }
+
+  &__options {
+    border: 1px solid #bbb;
+    position: absolute;
+    transform: translateY(15px);
+    width: 100%;
+
+    li {
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    li:hover {
+      background-color: var(--light-gray);
+      color: var(--beige);
+      cursor: pointer;
+    }
+  }
+
+}
