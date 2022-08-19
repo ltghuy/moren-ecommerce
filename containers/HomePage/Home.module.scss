@@ -32,6 +32,7 @@
       color: var(--text);
       font-size: 18px;
       line-height: 18px;
+      margin-top: 30px;
     }
     p {
       max-width: 640px;
@@ -74,6 +75,9 @@
       h1 {
         font-size: 4.5rem;
         line-height: 1;
+        color: var(--orange);
+        text-shadow: 6px -1px 0px #e7e7e7;
+
         @media screen and (max-width: 768px) {
           font-size: 1.5rem;
           line-height: 2rem;

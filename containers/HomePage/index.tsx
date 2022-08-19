@@ -86,7 +86,7 @@ const HomePage = () => {
         </section>
         <section className={`${styles.girl}`}>
           <div className={styles.thumnail}>
-            <h1 className='montserrat text-white uppercase'>For girl</h1>
+            <h1 className='font-lobster text-white uppercase'>For girl</h1>
           </div>
           <div className={`${styles.list} my-container`}>
             {
@@ -108,7 +108,7 @@ const HomePage = () => {
         </section>
         <section className={`${styles.boy}`}>
           <div className={styles.thumnail}>
-            <h1 className='montserrat text-white uppercase text-2xl lg:text-7xl'>For boy</h1>
+            <h1 className='font-lobster text-white uppercase text-2xl lg:text-7xl'>For boy</h1>
           </div>
           <div className={`${styles.list} my-container`}>
             {

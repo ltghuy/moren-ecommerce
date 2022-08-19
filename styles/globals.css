@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 :root {
   --green: #64AD9C;
   --white: #FFF;
@@ -47,6 +49,10 @@ body::-webkit-scrollbar-thumb {
 .montserrat {
   font-family: 'Montserrat';
 }
+.font-lobster {
+  font-family: 'Lobster', cursive;
+}
+
 .my-container {
   margin-left: auto;
   margin-right: auto;
