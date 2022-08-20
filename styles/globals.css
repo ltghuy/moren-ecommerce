@@ -16,10 +16,12 @@
   --lighter-gray: #f9f9f9;
   --navbar-height: 120px;
 }
- *::selection {
-  background-color: var(--green);
-  color: var(--white);
- }
+
+*::selection {
+background-color: var(--green);
+color: var(--white);
+}
+
 html,
 body {
   padding: 0;

@@ -12,6 +12,7 @@ import
   faXmark
 } from '@fortawesome/free-solid-svg-icons'
 import Cart from '../Cart'
+import SearchBox from '../SearchBox'
 import styles from './navbar.module.scss'
 
 
@@ -21,12 +22,21 @@ interface NavbarProps {
 
 const Navbar : React.FC<NavbarProps> = ({fixed}) => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [showSearch, setShowSearch] = useState<boolean>(false)
   const isShowCard = useSelector((state: any) => state.cart.showCart)
   const cartList = useSelector((state: any) => state.cart.cartList)
   const dispatch = useDispatch()
 
   const showCart = () => {
     dispatch(handleShowCart(true))
+  }
+
+  const handleShowSearch = () => {
+    setShowSearch(true)
+  }
+
+  const handleCloseSearch = (isSearch: boolean) => {
+    setShowSearch(isSearch)
   }
   
   const getTotalProduct = () => {
@@ -50,7 +60,7 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
         </a>
       </Link>
       <div className={`${styles.navbar__controls} flex items-center justify-between`}>
-        <div className='cursor-pointer hidden lg:block text-white'>
+        <div className='cursor-pointer hidden lg:block text-white' onClick={handleShowSearch}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </div>
         <div className='cursor-pointer mx-3 xl:mx-6 text-white'>
@@ -84,6 +94,9 @@ const Navbar : React.FC<NavbarProps> = ({fixed}) => {
       }
       {
         isShowCard && <Cart />
+      }
+      {
+        showSearch && <SearchBox setShowSearch={handleCloseSearch}/>
       }
     </div>
   )
