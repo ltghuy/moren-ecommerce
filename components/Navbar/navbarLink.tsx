@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { handleShowCart } from '../../redux/cartSlice'
@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import 
 { 
+  faBarsStaggered, 
   faMagnifyingGlass, 
   faDolly,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons'
-import Cart from '../../components/Cart'
+import Cart from '../Cart'
 import styles from './navbar.module.scss'
 
 

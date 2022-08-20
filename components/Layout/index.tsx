@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Navbar from '../Navbar'
 import NavbarLink from '../Navbar/navbarLink'
-import Footer from '../../components/Footer'
+import Footer from '../Footer'
 
 interface LayoutProps {
   content: any,
