@@ -17,6 +17,11 @@
   --navbar-height: 120px;
 }
 
+*::selection { 
+  background: var(--green); 
+  color: var(--white);
+}
+
 html,
 body {
   padding: 0;

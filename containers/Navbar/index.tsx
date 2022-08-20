@@ -11,7 +11,7 @@ import
   faDolly,
   faXmark
 } from '@fortawesome/free-solid-svg-icons'
-import Cart from '../Cart'
+import Cart from '../../components/Cart'
 import styles from './navbar.module.scss'
 
 

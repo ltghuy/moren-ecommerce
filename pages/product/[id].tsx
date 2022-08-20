@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import Layout from '../../components/Layout'
+import Layout from '../../containers/Layout'
 import ProductDetailPage from '../../containers/ProductDetail'
 
 interface ProductProps {

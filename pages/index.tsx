@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../containers/Layout'
 import HomePage from '../containers/HomePage'
 
 
