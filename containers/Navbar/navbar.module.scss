@@ -1,0 +1,117 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  height: var(--navbar-height);
+  &.link {
+    border-bottom: 0.5px solid #f3f3f3;
+    &.fixed {
+      box-shadow: none;
+    }
+  }
+  &.fixed {
+    background-color: var(--white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: slideDown 0.75s ease-in-out;
+    .navbar__controls svg, 
+    .navbar__menu svg {
+      filter: invert(1);
+    }
+  }
+  &__logo {
+    max-width: 160px;
+    @media screen and (max-width: 768px){
+      max-width: 120px;
+    }
+    @media screen and (max-width: 1280px){
+      margin-right: auto;
+      margin-left: 2rem;
+    }
+  }
+  &__menu {
+    svg {
+      color: var(--white);
+      width: 1.8rem;
+      height: 1.8rem;
+      @media screen and (max-width: 768px){
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+  &__controls,
+  &__button {
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+      @media screen and (max-width: 768px){
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+  .badge {
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    top: -30%;
+    right: -30%;
+    @media screen and (max-width: 1024px) {
+      right: unset;
+      left: 50%;
+    }
+  }
+  &__modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideRight 0.75s ease-in-out;
+    .link {
+      color: var(--white);
+      &:hover {
+        color: var(--green);
+      }
+    }
+    .close {
+      cursor: pointer;
+      position: absolute;
+      top: 20%;
+      right: 20%;
+      svg {
+        color: var(--white);
+        font-size: 3rem;
+        transition: all 0.5s;
+        &:hover {
+          color: var(--green);
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--navbar-height);
+  }
+}
+@keyframes slideRight {
+  from {
+    width: 50vw;
+    opacity: 0;
+  }
+  to {
+    width: 100vw;
+    opacity: 1;
+  }
+}
