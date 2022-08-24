@@ -1,0 +1,115 @@
+.about {
+  width: 100%;
+  padding: var(--navbar-height) 0px;
+
+  .wrapper {
+    width: 100%;
+    padding: 100px 76px;
+  }
+
+  .introduce {
+    height: 450px;
+
+    .video {
+      flex: 1;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .play_icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        svg {
+          width: 110px;
+          height: 110px;
+          color: var(--white);
+          animation: moveY 1s alternate linear infinite;
+        }
+      }
+    }
+
+    .description {
+      flex: 1;
+      padding-left: 80px;
+
+      h3 {
+        font-size: 32px;
+        line-height: 42px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .thumnail {
+      height: 240px !important;
+
+      h3 {
+        font-size: 18px;
+        line-height: 18px;
+        text-align: center;
+      }
+    }
+
+    .wrapper {
+      padding: 60px 24px;
+    }
+
+    .introduce {
+      height: unset;
+
+      .video {
+        .play_icon {
+          svg {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+
+      .description {
+        padding-left: 40px;
+        padding-top: 30px;
+
+        h3 {
+          font-size: 22px;
+          line-height: 28px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    .introduce {
+      .description {
+        padding-left: 0px;
+      }
+    }
+  }
+}
+
+@keyframes moveY {
+  0% {
+    transform: translateY(-5px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(5px);
+  }
+}
