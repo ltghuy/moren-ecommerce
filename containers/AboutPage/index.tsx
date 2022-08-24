@@ -1,4 +1,6 @@
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 import Thumnail from '../../components/Thumnail'
 import PlayIcon from '../../public/play-icon.svg'
 import styles from './about.module.scss'
@@ -25,6 +27,42 @@ const AboutPage = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque posuere mauris tincidunt orci, aliquet nam aliquet purus. Nulla in nullam eget at placerat egestas dignissim platea. Enim, euismod sed a integer tristique. Fringilla ultrices nunc, viverra interdum maecenas
             </p>
           </div>
+        </section>
+        <section className={styles.partners}>
+          <h3 className={`${styles.heading} montserrat`}>Our Partners</h3>
+          <Swiper
+            className={styles.slides}
+            slidesPerView={1}
+            spaceBetween={25}
+            lazy
+            breakpoints={{
+              768: {
+                slidesPerView: 2
+              },
+              1024: {
+                slidesPerView: 3
+              },
+              1280: {
+                slidesPerView: 4
+              },
+            }}
+          >
+            <SwiperSlide className={styles.slide}>
+              <img src="/images/partners/1.png" alt="partner logo" />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img src="/images/partners/2.png" alt="partner logo" />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img src="/images/partners/3.png" alt="partner logo" />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img src="/images/partners/4.png" alt="partner logo" />
+            </SwiperSlide>
+          </Swiper>
+        </section>
+        <section className={styles.company}>
+          <h3 className={`${styles.heading} montserrat`}>Company Leadership</h3>
         </section>
       </main>
     </div>
