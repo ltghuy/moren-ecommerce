@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Thumnail from '../../components/Thumnail'
 import PlayIcon from '../../public/play-icon.svg'
+import { leaderMembers } from '../../ultils/aboutItem'
 import styles from './about.module.scss'
 
 const AboutPage = () => {
+  const [playVideo, setPlayVideo] = useState<boolean>(false)
+  const videoRef = useRef<HTMLIFrameElement>(null)
+
+  const handleCloseVideo = (event: any) => {
+    if (videoRef.current && !videoRef.current.contains(event.target)) {
+      setPlayVideo(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleCloseVideo)
+    return () => { document.removeEventListener("mousedown", handleCloseVideo) }
+  }, [videoRef])
+
   return (
     <div className={styles.about}>
       <Thumnail
@@ -17,7 +32,7 @@ const AboutPage = () => {
         <section className={`${styles.introduce} flex justify-between items-center flex-col lg:flex-row`}>
           <div className={styles.video}>
             <img src="/images/about-videos.jpg" alt="about videos background" />
-            <button className={styles.play_icon}>
+            <button className={styles.play_icon} onClick={() => setPlayVideo(true)}>
               <PlayIcon />
             </button>
           </div>
@@ -63,7 +78,27 @@ const AboutPage = () => {
         </section>
         <section className={styles.company}>
           <h3 className={`${styles.heading} montserrat`}>Company Leadership</h3>
+          <div className={styles.list}>
+            {
+              leaderMembers.map((member) =>
+                <div className={`${styles.item} relative`} key={member.id}>
+                  <img src={member.img} alt="leader avatar" />
+                  <div className={styles.content}>
+                    <h4 className='text-white uppercase text-4xl font-semibold montserrat'>{member.name}</h4>
+                    <p className='text-white mt-5'>{member.rule}</p>
+                  </div>
+                </div>
+              )
+            }
+          </div>
         </section>
+        {
+          playVideo &&
+          <section className={`${styles.video_player} z-50 flex justify-center items-center`}>
+            <iframe src="https://www.youtube.com/embed/gQlMMD8auMs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ref={videoRef}>
+            </iframe>
+          </section>
+        }
       </main>
     </div>
   )
