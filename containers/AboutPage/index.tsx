@@ -8,6 +8,7 @@ import styles from './about.module.scss'
 
 const AboutPage = () => {
   const [playVideo, setPlayVideo] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const videoRef = useRef<HTMLIFrameElement>(null)
 
   const handleCloseVideo = (event: any) => {
@@ -16,10 +17,23 @@ const AboutPage = () => {
     }
   }
 
+  const handlePlayVideo = () => {
+    setLoading(true)
+    setPlayVideo(true)
+  }
+
   useEffect(() => {
     document.addEventListener("mousedown", handleCloseVideo)
     return () => { document.removeEventListener("mousedown", handleCloseVideo) }
   }, [videoRef])
+
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false)
+      }, 3000)
+    }
+  }, [playVideo, loading])
 
   return (
     <div className={styles.about}>
@@ -32,7 +46,7 @@ const AboutPage = () => {
         <section className={`${styles.introduce} flex justify-between items-center flex-col lg:flex-row`}>
           <div className={styles.video}>
             <img src="/images/about-videos.jpg" alt="about videos background" />
-            <button className={styles.play_icon} onClick={() => setPlayVideo(true)}>
+            <button className={styles.play_icon} onClick={handlePlayVideo}>
               <PlayIcon />
             </button>
           </div>
@@ -95,7 +109,12 @@ const AboutPage = () => {
         {
           playVideo &&
           <section className={`${styles.video_player} z-50 flex justify-center items-center`}>
-            <iframe src="https://www.youtube.com/embed/gQlMMD8auMs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ref={videoRef}>
+            <div className={`${styles.loading} ${loading ? 'flex' : 'hidden'}`}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <iframe src="https://www.youtube.com/embed/gQlMMD8auMs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ref={videoRef} style={{ display: `${loading ? 'none' : 'block'}` }}>
             </iframe>
           </section>
         }
