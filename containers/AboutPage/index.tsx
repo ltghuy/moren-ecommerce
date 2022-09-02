@@ -109,11 +109,7 @@ const AboutPage = () => {
         {
           playVideo &&
           <section className={`${styles.video_player} z-50 flex justify-center items-center`}>
-            <div className={`${styles.loading} ${loading ? 'flex' : 'hidden'}`}>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <div className={`${styles.loading} ${loading ? 'block' : 'hidden'}`}></div>
             <iframe src="https://www.youtube.com/embed/gQlMMD8auMs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ref={videoRef} style={{ display: `${loading ? 'none' : 'block'}` }}>
             </iframe>
           </section>

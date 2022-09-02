@@ -151,6 +151,7 @@ const CartPage = () => {
                         <input
                           type="radio"
                           name="default"
+                          id="default"
                           value="default"
                           onChange={() => setShippingType("default")}
                           checked={shippingType === "default"}
@@ -159,6 +160,7 @@ const CartPage = () => {
                         <input
                           type="radio"
                           name="local"
+                          id="local"
                           value="local"
                           onChange={() => setShippingType("local")}
                           checked={shippingType === "local"}

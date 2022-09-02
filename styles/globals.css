@@ -30,6 +30,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   font-weight: 400;
+  background-color: var(--white);
   color: var(--text);
 }
 
