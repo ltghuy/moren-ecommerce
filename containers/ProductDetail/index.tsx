@@ -9,7 +9,7 @@ import Item from '../../components/Item'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { faFacebookF, faTwitter, faLinkedinIn, faPinterestP} from '@fortawesome/free-brands-svg-icons'
+import { faFacebookF, faTwitter, faLinkedinIn, faPinterestP } from '@fortawesome/free-brands-svg-icons'
 import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from 'swiper'
@@ -20,14 +20,14 @@ import styles from './producDetail.module.scss'
 
 interface ProductProps {
   data: {
-    id: number, 
-    imageUrl: string, 
-    name: string, 
+    id: number,
+    imageUrl: string,
+    name: string,
     price: number
   }
 }
 
-const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
+const ProductDetailPage: React.FC<ProductProps> = ({ data }) => {
   const [quantity, setQuantity] = useState<number>(1)
   const mockDataRelated = GirlItemList.slice(0, 4)
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
   }
 
   const handleAddToCart = (data: ProductProps['data'], quantity: number) => {
-    dispatch(addToCart({data, quantity}))
+    dispatch(addToCart({ data, quantity }))
     dispatch(handleShowCart(true))
   }
 
@@ -58,23 +58,25 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
       </div>
       <div className={styles.product__info}>
         <div className={styles.image}>
-          <InnerImageZoom 
-          src={data.imageUrl} 
-          zoomScale={0.85} 
-          zoomType='hover'
-          fullscreenOnMobile={true} />
+          <InnerImageZoom
+            src={data.imageUrl}
+            zoomScale={0.85}
+            zoomType='hover'
+            fullscreenOnMobile={true} />
         </div>
         <div className={styles.desc}>
           <h3 className={`${styles.name} font-semibold montserrat`}>{data.name}</h3>
           <p className={styles.price}>{`£${data.price}`}</p>
           <div className={styles.line} />
           <p className={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rem magni illo culpa perferendis obcaecati, quas mollitia odit voluptatum delectus blanditiis placeat nulla! Voluptate, tempore officiis deserunt ullam mollitia velit rerum earum magnam dolores! Fuga dolorem atque totam praesentium, ipsam quia quod voluptate perspiciatis harum aut aliquam, dolore facilis ducimus?
+            Material: 2-way cotton <br />
+            Inspired by hippie trips combined with floral and leaf motifs with a summer vibe <br />
+            The product is printed on the back side with silk screen printing technique. High durability, does not peel, peel when washing.
           </p>
           <div className={styles.form}>
             <div className={styles.range}>
               <button onClick={() => updateQuantity(-1)}>-</button>
-              <p>{ quantity }</p>
+              <p>{quantity}</p>
               <button onClick={() => updateQuantity(1)}>+</button>
             </div>
             <div className={styles.submit__btn} onClick={() => handleAddToCart(data, quantity)}>
@@ -103,53 +105,53 @@ const ProductDetailPage: React.FC<ProductProps> = ({data}) => {
           </div>
           <div className={styles.line} />
           <div className={styles.socials}>
-            <Link  href="/">
-              <a><FontAwesomeIcon icon={faFacebookF  as IconProp}/></a>
+            <Link href="/">
+              <a><FontAwesomeIcon icon={faFacebookF as IconProp} /></a>
             </Link>
-            <Link  href="/">
-              <a><FontAwesomeIcon icon={faTwitter  as IconProp}/></a>
+            <Link href="/">
+              <a><FontAwesomeIcon icon={faTwitter as IconProp} /></a>
             </Link>
-            <Link  href="/">
-              <a><FontAwesomeIcon icon={faLinkedinIn  as IconProp}/></a>
+            <Link href="/">
+              <a><FontAwesomeIcon icon={faLinkedinIn as IconProp} /></a>
             </Link>
-            <Link  href="/">
-              <a><FontAwesomeIcon icon={faPinterestP  as IconProp}/></a>
+            <Link href="/">
+              <a><FontAwesomeIcon icon={faPinterestP as IconProp} /></a>
             </Link>
           </div>
         </div>
       </div>
       <div className={`${styles.line} hidden md:block`} />
-      <Tabs productName={data.name}/>
+      <Tabs productName={data.name} />
       <div className={`${styles.line} hidden md:block`} />
       <div className={`${styles.product__related}`}>
         <h3 className='montserrat text-2xl font-semibold'>Related Products</h3>
         <Swiper
-            modules={[Autoplay]}
-            className={styles.product__related__list}
-            grabCursor={true}
-            slidesPerView={1}
-            spaceBetween={50}
-            breakpoints={{
-              768: {
-                slidesPerView: 2
-              },
-              1024: {
-                slidesPerView: 3
-              },
-              1280: {
-                slidesPerView: 4
-              },
-            }}
-          >
-            {
-              mockDataRelated.map((item) =>
-                <SwiperSlide key={item.id}>
-                  <Item data={item} showText={false} />
-                </SwiperSlide>
-              )
-            }
+          modules={[Autoplay]}
+          className={styles.product__related__list}
+          grabCursor={true}
+          slidesPerView={1}
+          spaceBetween={50}
+          breakpoints={{
+            768: {
+              slidesPerView: 2
+            },
+            1024: {
+              slidesPerView: 3
+            },
+            1280: {
+              slidesPerView: 4
+            },
+          }}
+        >
+          {
+            mockDataRelated.map((item) =>
+              <SwiperSlide key={item.id}>
+                <Item data={item} showText={false} />
+              </SwiperSlide>
+            )
+          }
         </Swiper>
-      </div>  
+      </div>
     </div>
   )
 }

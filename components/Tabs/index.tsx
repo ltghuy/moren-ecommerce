@@ -6,7 +6,7 @@ interface ProductProps {
 }
 const Tabs: React.FC<ProductProps> = ({ productName }) => {
   const [tab, setTab] = useState<string>('desc')
-  
+
   const handleTab = (name: string) => {
     setTab(name)
   }
@@ -18,10 +18,10 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
         <div className='xl:max-w-lg w-full xl:w-2/3 flex-shrink-0 ml-0 xl:ml-16 mt-8 xl:mt-0'>
           <h3 className='montserrat font-semibold text-2xl'>Made with love</h3>
           <p className='pt-5'>
-            Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at.
+            MOREN presents the Spring-Summer 2022 Collection with an emphasis on refined tailoring and simplified silhouettes. The designs are exquisitely crafted on the House&apos;s signature garments - silk, taffeta, chiffon and double satin. The fashion house continuously demonstrates exceptional craftsmanship through sophisticated techniques such as draping, embroidery, and 3D origami-folded techniques. The collection evokes the feminine beauty of modern women &#45; poised, elegant, yet alluring.
           </p>
           <p className='pt-5'>
-            Duis efficitur gravida tincidunt. Nam sodales vel odio at sollicitudin. Vestibulum sed rutrum nisl. Nulla diam arcu, facilisis nec blandit non, interdum et orci. Nam aliquam lorem vitae risus molestie convallis.
+            Every individual represents a unique and distinct color in the picture of life. My color is different from your color and different from anyone else. However, our differences in harmony create an eternal beauty of this world.
           </p>
         </div>
       </div>
@@ -32,7 +32,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
     return (
       <div>
         <h3 className='montserrat text-xl h-12'>Review</h3>
-        <div className={styles.line}/>
+        <div className={styles.line} />
         <p className='pt-5 md:pt-8'>There are no reviews yet.</p>
         <h3 className='text-base md:text-xl font-semibold pt-8 md:pt-14'>
           Be the first to review &quot;{productName}&quot;
@@ -40,13 +40,13 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
         <p className='text-sm pt-4 italic text-slate-700 pb-4'>
           Your email address will not be published. Required fields are marked *
         </p>
-        <div className={styles.line}/>
+        <div className={styles.line} />
         <div>
           <label htmlFor="review" className='block my-4'>Your review *</label>
-          <textarea 
-            name="review" 
-            id="review" 
-            rows={6}/>
+          <textarea
+            name="review"
+            id="review"
+            rows={6} />
         </div>
         <div className='flex flex-col lg:flex-row'>
           <div>
@@ -68,7 +68,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
           </div>
         </div>
         <div className='flex items-center mt-5'>
-          <input type="checkbox" name="remember" id="remember" className='w-5 h-5'/>
+          <input type="checkbox" name="remember" id="remember" className='w-5 h-5' />
           <label htmlFor="remember" className='text-xs md:text-sm ml-4'>
             Save my name, email, and website in this browser for the next time I comment.
           </label>
@@ -79,7 +79,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
       </div>
     )
   }
-  
+
   return (
     <div className={`${styles.tabs} px-0 xl:px-24`}>
       <div className={`${styles.tabs__option} pb-10 md:pb-14`}>
@@ -90,7 +90,7 @@ const Tabs: React.FC<ProductProps> = ({ productName }) => {
           Review (0)
         </button>
       </div>
-      { tab === 'desc' ? <DescTab /> : <ReviewTab /> }
+      {tab === 'desc' ? <DescTab /> : <ReviewTab />}
     </div>
   )
 }

@@ -53,7 +53,7 @@ const AboutPage = () => {
           <div className={styles.description}>
             <h3 className='montserrat'>Welcome to <br /> Moren Online Store</h3>
             <p className='text-lg mt-5'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque posuere mauris tincidunt orci, aliquet nam aliquet purus. Nulla in nullam eget at placerat egestas dignissim platea. Enim, euismod sed a integer tristique. Fringilla ultrices nunc, viverra interdum maecenas
+              Launched in 2022, the Moren commerce platform was built to provide users with an easy, safe and fast experience when shopping online through a strong payment support and operating system. We strongly believe that the online shopping experience should be simple, easy and emotionally pleasurable. This belief inspires and drives us every day at Moren.
             </p>
           </div>
         </section>

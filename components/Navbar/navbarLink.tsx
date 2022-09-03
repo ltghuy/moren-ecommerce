@@ -46,22 +46,22 @@ const NavbarLink: React.FC<NavbarProps> = ({ fixed }) => {
       </Link>
       <div className='hidden lg:flex mr-5 xl:mr-0 text-sm lg:text-lg'>
         <Link href='/'>
-          <a className={`${router.pathname === '/' ? 'text-amber-600' : ''} uppercase text-slate-800 hover:text-amber-600 mx-2 lg:mx-5 transition`}>
+          <a className={`${router.pathname === '/' ? 'text-amber-600' : 'text-slate-800'} uppercase hover:text-amber-600 mx-2 lg:mx-5 transition`}>
             Home
           </a>
         </Link>
         <Link href='/shop'>
-          <a className={`${router.pathname === '/shop' ? 'text-amber-600' : ''} uppercase text-slate-800 hover:text-amber-600 mx-2 lg:mx-5 transition`}>
+          <a className={`${router.pathname === '/shop' ? 'text-amber-600' : 'text-slate-800'} uppercase hover:text-amber-600 mx-2 lg:mx-5 transition`}>
             Shop
           </a>
         </Link>
         <Link href='/about'>
-          <a className={`${router.pathname === '/about' ? 'text-amber-600' : ''} uppercase text-slate-800 hover:text-amber-600 mx-2 lg:mx-5 transition`}>
+          <a className={`${router.pathname === '/about' ? 'text-amber-600' : 'text-slate-800'} uppercase hover:text-amber-600 mx-2 lg:mx-5 transition`}>
             About Us
           </a>
         </Link>
         <Link href='/contact'>
-          <a className={`${router.pathname === '/contact' ? 'text-amber-600' : ''} uppercase text-slate-800 hover:text-amber-600 mx-2 lg:mx-5 transition`}>
+          <a className={`${router.pathname === '/contact' ? 'text-amber-600' : 'text-slate-800'} uppercase hover:text-amber-600 mx-2 lg:mx-5 transition`}>
             Contact
           </a>
         </Link>
