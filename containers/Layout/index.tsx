@@ -6,7 +6,7 @@ import NavbarLink from '../Navbar/navbarLink'
 import Footer from '../../components/Footer'
 
 interface LayoutProps {
-  content: any,
+  content: React.ReactNode,
   title: string
 }
 

@@ -4,7 +4,7 @@ import { faXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import styles from './search.module.scss'
 
 interface SearchProps {
-  setShowSearch: Function
+  setShowSearch: (show: boolean) => void
 }
 
 const SearchBox: React.FC<SearchProps> = ({ setShowSearch }) => {

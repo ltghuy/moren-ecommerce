@@ -16,10 +16,10 @@ import styles from './navbar.module.scss'
 
 
 interface NavbarProps {
-  fixed?:boolean
+  fixed?: boolean
 }
 
-const Navbar : React.FC<NavbarProps> = ({fixed}) => {
+const Navbar : React.FC<NavbarProps> = ({ fixed }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
   const isShowCard = useSelector((state: any) => state.cart.showCart)
   const cartList = useSelector((state: any) => state.cart.cartList)

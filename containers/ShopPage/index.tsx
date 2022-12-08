@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faCheck, faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
 import { SideBarCategory, SideBarColors, SidebarBrands, SidebarInstagram } from '../../ultils/sidebarItems'
-import GripIcon from '../../public/grip-solid.svg'
+import GridIcon from '../../public/grip-solid.svg'
 import ListIcon from '../../public/list-ul-solid.svg'
 import Thumnail from '../../components/Thumnail'
 import Dropdown from '../../components/Dropdown'
@@ -22,7 +22,7 @@ interface ProductProps {
 const ShopPage = () => {
   const [sizeQuery, setSizeQuery] = useState<string[]>([])
   const [brandQuery, setBrandQuery] = useState<string[]>([])
-  const [layout, setLayout] = useState<string>('grip')
+  const [layout, setLayout] = useState<string>('grid')
   const productList: ProductProps[] = useSelector((state: any) => state.cart.productList)
 
   const pagingSelection = [
@@ -97,7 +97,7 @@ const ShopPage = () => {
             <div className='flex'>
               {
                 SideBarColors.map((color) =>
-                  <Link href={color.link}>
+                  <Link href={color.link} key={color.id}>
                     <a key={color.id} className={styles.color} style={{ backgroundColor: `${color.color}` }}>
                       <FontAwesomeIcon icon={faCheck} color='white' />
                     </a>
@@ -165,9 +165,9 @@ const ShopPage = () => {
               <ListIcon
                 className={`${styles.list_icon} ${layout === 'list' && styles.active}`}
                 onClick={() => handleLayout('list')} />
-              <GripIcon
-                className={`${styles.grip_icon} ${layout === 'grip' && styles.active}`}
-                onClick={() => handleLayout('grip')} />
+              <GridIcon
+                className={`${styles.grip_icon} ${layout === 'grid' && styles.active}`}
+                onClick={() => handleLayout('grid')} />
             </div>
           </div>
           <div className={styles.products}>

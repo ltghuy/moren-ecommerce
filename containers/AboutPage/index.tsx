@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { leaderMembers } from '../../ultils/aboutItem'
 import Thumnail from '../../components/Thumnail'
 import PlayIcon from '../../public/play-icon.svg'
-import { leaderMembers } from '../../ultils/aboutItem'
 import styles from './about.module.scss'
 
 const AboutPage = () => {

@@ -19,7 +19,7 @@ interface CartItem {
 }
 
 const CartPage = () => {
-  const [shippingType, setShippingType] = useState<string>('default')
+  const [shippingType, setShippingType] = useState<'default' | 'local'>('default')
   const cartList = useSelector((state: any) => state.cart.cartList)
   const dispatch = useDispatch()
   let shippingFee = 50
@@ -67,7 +67,7 @@ const CartPage = () => {
                     <tbody>
                       {
                         cartList.map((product: CartItem) => (
-                          <tr>
+                          <tr key={product.id}>
                             <td style={{ width: '5%', textAlign: 'center' }}>
                               <button
                                 style={{ padding: '5px' }}
